@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <img src="{{ asset('assets/no-image.jpeg') }}" class="img-fluid shadow-sm"
-                                    style="border-radius: 14px;">
+                                    style="border-radius: 14px;" id="blah">
                                 <div class="mt-3">
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
                                         <div>
@@ -67,7 +67,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Masukan Thumbnail Product</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                        name="image" autocomplete="off">
+                                        name="image" autocomplete="off" id="imgInp">
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -110,6 +110,14 @@
     <script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
     <script src="{{ asset('assets/js/pages/filepond.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
     <script>
         $('#summernote').summernote({
             placeholder: 'Masukan Deskripsi lengkap produk',
