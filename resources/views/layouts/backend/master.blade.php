@@ -133,6 +133,30 @@
     <!-- Need: Apexcharts -->
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                title: 'Terima Kasih',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Tutup'
+            });
+        </script>
+    @endif
+
+    @if (session('galat'))
+        <script type="text/javascript">
+            Swal.fire({
+                title: 'Maaf',
+                text: '{{ session('galat') }}',
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Tutup'
+            });
+        </script>
+    @endif
     @yield('scripts')
 </body>
 

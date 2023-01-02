@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Backend\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,8 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
-        return view('frontend.home.index');
+        // variabel baru
+        $data = Product::all();
+        return view('frontend.home.index', compact('data'));
     }
 
     /**
