@@ -1,222 +1,173 @@
 body {
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    color: #414a4c;
+    font-weight: 500;
 }
 
 a {
     text-decoration: none;
 }
 
-.shadow-nih {
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+a:hover {
+    color: none;
 }
 
-.rounded-20 {
-    border-radius: 20px;
+/* search product */
+
+.muncul {
+    display: block;
 }
 
-.sticky {
-    position: sticky;
-    top: 10px;
+.ilang {
+    display: none;
 }
 
-/* navbar style */
+
+/* navbar styling */
+
 .navbar {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.mx-auto .nav-item {
-    margin-right: 25px;
-}
-
-/* header style */
-.carousel-item img {
-    border-radius: 20px;
-}
-
-/* button */
-.navbar .btn-primary {
-    width: 148px;
-    height: 50px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-}
-
-.btn-primary {
-    background-color: #0ba6ff;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-}
-
-/* product style */
-
-.product {
-    margin-top: 40px;
-    margin-bottom: 50px;
-}
-
-.title p {
-    margin-bottom: 0px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-}
-
-.title h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: #414a4c;
-}
-
-.product .lihat {
-    width: 200px;
-    height: 50px;
-}
-
-#list-product {
-    margin-top: 20px;
-}
-
-#list-product .card {
-    margin-top: 20px;
-}
-
-.topic .beli {
-    border-radius: 15px;
-    width: 120px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.topic h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    text-align: center;
-    font-size: 25px;
-    margin-bottom: 30px;
-}
-
-.harga small {
-    margin-bottom: 0px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-}
-
-.harga p {
-    margin-top: -3px;
-    margin-bottom: 0px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-}
-
-.image {
-    width: 100%;
-    height: 200px;
-    z-index: 0;
-}
-
-.image .bg {
-    background-color: #0ba6ff;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    margin-top: 21px;
-    margin-left: 63px;
-    z-index: 1;
-    position: absolute;
-}
-
-.bg:hover {
-    background-color: #414a4c;
-}
-
-.image img {
-    position: absolute;
-    margin-top: 7px;
-    margin-left: 32px;
-    width: 211px;
-    z-index: 999;
-}
-
-
-
-/* =================== detail page =================================== */
-
-.detail {
-    margin-top: 0px;
-    margin-bottom: 40px;
-}
-
-.detail .card {
-    margin-top: 20px;
-}
-
-.image-detail {
-    width: 100%;
-    height: 300px;
-    z-index: 0;
-}
-
-.image-detail .bg {
-    background-color: #0ba6ff;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    margin-top: 21px;
-    margin-left: 63px;
-    z-index: 1;
-    position: absolute;
-}
-
-.image-detail img {
-    position: absolute;
-    margin-top: 7px;
-    margin-left: 32px;
-    width: 350px;
-    z-index: 999;
-}
-
-.detail h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.detail h4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 0px;
-}
-
-.btn-cart {
-    height: 50px;
-}
-
-.review {
-    margin-bottom: 50px;
-}
-
-#testimoni {
-    margin-top: 30px;
-}
-
-.penjual {
+.navbar .navbar-brand .judul {
     margin-left: 10px;
 }
 
-.penjual h4 {
-    margin-bottom: 0px;
+.navbar .navbar-brand .judul p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: -10px;
+    margin-top: 1px;
+}
+
+.navbar .navbar-brand .judul small {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.navbar .profile {
+    margin-left: 10px;
+}
+
+.navbar .profile p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: -10px;
+    margin-top: 3px;
+}
+
+/* main style */
+
+main {
+    margin-top: 30px;
+}
+
+.kiri .row {
+    margin-top: 10px;
+}
+
+.kiri #list-product {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.kiri form .form-control {
+    /* border: none; */
+    height: 50px;
+    box-shadow: 0px 10px 15px -3px rgb(0 0 0 / 10%);
+    border-radius: 15px;
+}
+
+.kiri .card {
+    box-shadow: 0px 10px 15px -3px rgb(0 0 0 / 10%);
+    border-radius: 15px;
+    border: none;
+    margin-top: 20px;
+}
+
+.kiri .card:hover {
+    border: 3px #007FFF solid;
+}
+
+.kiri .card .img-product {
+    border-radius: 15px;
+    max-width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.kiri .card h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
-    margin-top: 8px;
 }
 
-#testimoni .card {
-    margin-top: 20px;
+/* cart */
+
+.cart {
+    margin-top: 30px;
+    height: 320px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.cart .list-cart {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* display: flex; */
+}
+
+.cart .list-cart .img-cart {
+    border-radius: 10px;
+    max-width: 40%;
+    height: 50px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cart .list-cart .detail-cart {
+    margin-left: 10px;
+}
+
+.cart .list-cart .detail-cart p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: -4px;
+}
+
+.cart .list-cart .detail-cart small {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.cart .list-cart .btn-action-cart {
+    position: relative;
+    left: 0;
+    width: 115px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    margin-left: 0;
+}
+
+.cart .list-cart .btn-action-cart .btn {
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    font-size: 12px;
+}
+
+.cart .list-cart .btn-action-cart .jumlah {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    padding: 5px 5px 5px 14px;
+    border: none;
+    font-size: 18px;
+    width: 40px;
 }

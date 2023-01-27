@@ -2,67 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Voucher;
 use App\Models\Backend\Product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
      * ini adalah function untuk home halaman 
-     * depan dari webiste toko online yang buat
+     * depan dari webiste p[os] yang buat
      */
     public function index()
     {
         // variabel baru
         $data = Product::all();
-        return view('frontend.home.index', compact('data'));
+        $cart = Cart::with('product')->get();
+        return view('home.index', compact('data', 'cart'));
     }
 
-    /**
-     * ini adalah function untuk seluruh product
-     * webiste toko online yang buat
-     */
-    public function product()
+    public function store(Request $request)
     {
-        //
-        return view('frontend.product.index');
+        // cek input
+        // dd($request->all());
+
+        $cek = Product::find($request->id);
+        if (empty($cek)) {
+            # jika tidak ada barang maka 
+            return redirect()->route('index')->with('galat', 'Product Tidak Ada');
+        } else {
+            # kalau ada maka
+
+            // cek barang di keranjang
+            $cart = Cart::where('product_id', $cek->id)->first();
+            if (empty($cart)) {
+                # kalo keranjang kosong maka
+                Cart::create([
+                    'product_id' => $cek->id,
+                    'jumlah' => 1,
+                    'harga' => $cek->harga
+                ]);
+
+                return redirect()->route('index')->with('success', 'Kue Berhasil Masuk Keranjang');
+            } else {
+                # kalau sudah ada maka tambahkan jumlah dan harga 
+                $cart->update([
+                    'jumlah' => $cart->jumlah + 1,
+                    'harga' => $cart->harga + $cek->harga
+                ]);
+
+                // dd('update keranjang berhasil');
+                return redirect()->route('index')->with('success', 'Keranjang Kue Berhasil di update');
+            }   
+        }
     }
 
-    /**
-     * ini adalah function untuk halaman detail
-     * dari product yang kita buat pada crud product
-     */
-    public function detail($slug)
+    public function destroy()
     {
-        //
-        return view('frontend.product.detail');
+        Cart::truncate();
+        // dd('keranjang dihapus semua');
+        return redirect()->route('index')->with('success', 'Keranjang dihapus');
     }
 
-    /**
-     * ini adalah function untuk melihat product 
-     * yang sudah dimasukan dalam database cart / keranjang
-     */
-    public function cart()
+    public function hapus_item($id)
     {
-        //
-        return view('frontend.cart.index');
+        $cart = Cart::find($id);
+        if (empty($cart)) {
+            # code...
+            return back()->with('galat', 'Item Tidak Ada');
+        }
+
+        $cart->delete();
+
+        return redirect()->route('index')->with('success', 'Item Keranjang dihapus');
     }
 
-    /**
-     * ini adalah function memasukan product ke dalam
-     * keranjang belanja kita, atau add to cart
-     */
-    public function add_to_cart(Request $request)
+    public function kupon(Request $request)
     {
-        //
-    }
+        $cek = Voucher::whereKode($request->kode)->first();
+        if (empty($cek)) {
+            # code...
+            return redirect()->route('index')->with('galat', 'Kupon Tidak ada');
+        }
 
-    /**
-     * ini adalah function menghapus salah satu product
-     * yang ada dalam keranjang belanja
-     */
-    public function destroy_cart_product($id)
-    {
-        //
+        return redirect()->route('index')->with([
+            'success' => 'Berhasil klaim koupon',
+            'potongan' => $cek->potongan
+        ]);
     }
 }
