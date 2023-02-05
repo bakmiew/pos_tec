@@ -40,15 +40,5 @@
                 <span>Tambah Discount</span>
             </a>
         </li>
-
-        <li class="sidebar-title">Kelola Invoice</li>
-
-
-        <li class="sidebar-item {{ request()->is('admin/invoice') ? 'active' : '' }}">
-            <a href="#" class='sidebar-link'>
-                <i class="bi bi-clipboard2-plus-fill"></i>
-                <span>Rekap Invoice</span>
-            </a>
-        </li>
     </ul>
 </div>
